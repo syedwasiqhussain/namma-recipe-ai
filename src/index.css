@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 216 98% 52%;
+    --color-primary-dark: 220 98% 42%;
+    --color-secondary: 40 100% 60%;
+    --color-accent: 0 85% 55%;
+    --color-success: 142 76% 36%;
+    --color-warning: 38 92% 50%;
+    --color-error: 0 84% 60%;
+    --color-background: 36 100% 97%;
+    --color-text: 220 20% 20%;
+  }
+
+  body {
+    @apply bg-background text-text font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/70 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary text-white hover:bg-primary-dark focus:ring-primary/50;
+  }
+
+  .btn-secondary {
+    @apply btn bg-secondary text-text hover:bg-secondary/90 focus:ring-secondary/50;
+  }
+
+  .btn-accent {
+    @apply btn bg-accent text-white hover:bg-accent/90 focus:ring-accent/50;
+  }
+
+  .btn-outline {
+    @apply btn bg-transparent border border-primary text-primary hover:bg-primary hover:text-white;
+  }
+
+  .input {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300;
+  }
+  
+  .container-custom {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-12 md:py-16;
+  }
+
+  .heading-1 {
+    @apply text-3xl md:text-4xl font-bold text-text;
+  }
+
+  .heading-2 {
+    @apply text-2xl md:text-3xl font-bold text-text;
+  }
+
+  .heading-3 {
+    @apply text-xl md:text-2xl font-bold text-text;
+  }
+}
+
+/* Loading animation */
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid hsl(var(--color-primary) / 0.3);
+  border-bottom-color: hsl(var(--color-primary));
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Recipe generation animation */
+.typing-animation::after {
+  content: '|';
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
