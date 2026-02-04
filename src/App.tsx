@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AnimatePresence } from 'framer-motion';
@@ -31,37 +31,44 @@ function App() {
   }, [checkAuth]);
 
   return (
-    <Router>
-      <DoorAnimation>
-        <AnimatePresence mode="wait">
-          <Layout>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/generator" element={<RecipeGenerator />} />
-              <Route path="/recipe/:id" element={<RecipeDetails />} />
-              <Route path="/cart" element={
+    <DoorAnimation>
+      <AnimatePresence mode="wait">
+        <Layout>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/generator" element={<RecipeGenerator />} />
+            <Route path="/recipe/:id" element={<RecipeDetails />} />
+            <Route
+              path="/cart"
+              element={
                 <ProtectedRoute>
                   <CartPage />
                 </ProtectedRoute>
-              } />
-              <Route path="/orders" element={
+              }
+            />
+            <Route
+              path="/orders"
+              element={
                 <ProtectedRoute>
                   <OrdersPage />
                 </ProtectedRoute>
-              } />
-              <Route path="/admin" element={
+              }
+            />
+            <Route
+              path="/admin"
+              element={
                 <AdminRoute>
                   <AdminDashboard />
                 </AdminRoute>
-              } />
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-          </Layout>
-        </AnimatePresence>
-        <ToastContainer position="bottom-right" />
-      </DoorAnimation>
-    </Router>
+              }
+            />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Layout>
+      </AnimatePresence>
+      <ToastContainer position="bottom-right" />
+    </DoorAnimation>
   );
 }
 
